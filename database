@@ -1,0 +1,173 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: Aug 18, 2024 at 10:35 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `marketplace_pc`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admindetails`
+--
+
+CREATE TABLE `admindetails` (
+  `username` varchar(20) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `password` varchar(12) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admindetails`
+--
+
+INSERT INTO `admindetails` (`username`, `email`, `password`) VALUES
+('admin', 'admin@gmail.com', '123456'),
+('yash', 'yash@gmail.com', '123456');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `pname` varchar(100) NOT NULL,
+  `price` int(11) NOT NULL,
+  `image` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `catid` int(11) NOT NULL,
+  `catname` varchar(23) NOT NULL,
+  `cimage` varchar(200) NOT NULL,
+  `cdesc` varchar(300) NOT NULL,
+  `oprice` varchar(10) NOT NULL,
+  `price` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`catid`, `catname`, `cimage`, `cdesc`, `oprice`, `price`) VALUES
+(36, 'Graphic Card', 'GIGABYTE NVIDIA GeForce RTX 3060.png', 'Transform your visuals with a GPU that delivers breathtaking graphics and smooth gameplay.', '17506', '16266'),
+(37, 'Ram', 'RAM.png', 'Boost your system\'s efficiency with lightning-fast RAM that handles multitasking.', '9799', '7800'),
+(38, 'CPU', 'CPU.png', 'Unleash blazing speed and unmatched performance with our top-of-the-line CPU.', '26000', '24500');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `pid` int(11) NOT NULL,
+  `pname` varchar(400) NOT NULL,
+  `catid` int(11) NOT NULL,
+  `description` varchar(1000) NOT NULL,
+  `oprice` varchar(10) NOT NULL,
+  `price` varchar(10) NOT NULL,
+  `image` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`pid`, `pname`, `catid`, `description`, `oprice`, `price`, `image`) VALUES
+(29, 'MSI GeForce GTX 1650 D6 VENTUS XS OCV3 Graphic Card - NVIDIA GeForce GTX 1650 GPU, 4GB GDDR6 128-bit Memory, 12 Gbps, PCI Express x16 3.0 Interface, 1620 MHz', 36, 'MSI GeForce GTX 1650 D6 VENTUS XS OCV3 Graphic Card - NVIDIA GeForce GTX 1650 GPU, 4GB GDDR6 128-bit Memory, 12 Gbps, PCI Express x16 3.0 Interface, 1620 MHz', '25999', '12788', 'MSI GeForce GTX 1650 D6 VENTUS XS OCV3 Graphic Card - NVIDIA GeForce GTX 1650 GPU, 4GB GDDR6 128-bit Memory, 12 Gbps, PCI Express x16 3.0 Interface, 1620 MHz.png'),
+(30, 'DDR3 1600 MHz 8 GB RAM Desktop Memory |DIMM Form Factor | Reliable Performance | Enhanced System Responsiveness', 37, 'Introducing Amazon Basics DDR3 1600 MHz 8 GB Desktop RAM for enhanced performance. Experience smooth multitasking and quicker application launches with a clock speed of 1600 MHz. Ideal for everyday computing needs like web browsing and office tasks, it ensures enhanced system responsiveness.', '2999', '799', 'RAM.png'),
+(33, 'Silicon Power XPOWER Turbine DDR4 8GB 3000MHz PC4-25600 CL16 1.35V 288-Pin UDIMM Gaming Desktop PC Computer RAM Memory Module', 37, 'High-performance 16GB DDR4 Dual Channel Kit containing 2 x 8GB modules, 3200MHz (PC4 25600), 288-Pin UDIMM, CAS Latency CL16 (16-18-18-38) at 1.35V.Lifetime warranty promises complete Silicon Power technical support and service.', '19000', '2999', 'ram2-removebg-preview.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `registeration`
+--
+
+CREATE TABLE `registeration` (
+  `name` varchar(30) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `registeration`
+--
+
+INSERT INTO `registeration` (`name`, `username`, `email`, `password`) VALUES
+('admin', 'admin', 'admin@gmail.com', '$2y$10$/F.YMvDdejguCfD.7gjpN.9IMxyUkVVS3bvXo.4Lv0mFDSovm9WFm'),
+('Yash Verma', 'yash_vr', 'yash@gmail.com', '$2y$10$fIQftQcJ5EiaKIhHho12yu.3UTowTbvL0nd.cjb5P85e1R3fFe9kK');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admindetails`
+--
+ALTER TABLE `admindetails`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`catid`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`pid`);
+
+--
+-- Indexes for table `registeration`
+--
+ALTER TABLE `registeration`
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `catid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
